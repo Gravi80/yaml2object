@@ -115,7 +115,7 @@ class TestYAMLObject(object):
         class Test(metaclass=YAMLObject):
             source = 'yaml file path'
 
-        logger_mock.warning.assert_called_once_with("Missing namespace attribute.\n"
+        logger_mock.warning.assert_called_once_with("Missing namespace attribute."
                                                     "Converting 'yaml file path' to object.")
 
     @patch('yaml2object.yaml_object.logger')
@@ -129,4 +129,4 @@ class TestYAMLObject(object):
             namespace = 'invalid'
 
         logger_mock.warning.assert_called_once_with("Missing 'invalid' param in 'yaml file path'."
-                                                    "\nConverting 'yaml file path' to object.")
+                                                    "Converting 'yaml file path' to object.")

@@ -37,10 +37,10 @@ class YAMLObject(type):
                 return yaml_content.get(namespace)
             else:
                 logger.warning(f"Missing '{namespace}' param in '{source}'."
-                               f"\nConverting '{source}' to object.")
+                               f"Converting '{source}' to object.")
                 return yaml_content
         else:
-            logger.warning(f"Missing namespace attribute.\nConverting '{source}' to object.")
+            logger.warning(f"Missing namespace attribute.Converting '{source}' to object.")
             return yaml_content
 
     @classmethod

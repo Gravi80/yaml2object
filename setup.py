@@ -29,9 +29,9 @@ class install(_install):
 if __name__ == '__main__':
     setup(
         name='yaml2object',
-        version='1.0.3',
+        version='1.0.4',
         description='A simple solution that allows dot notation for YAML file.',
-        long_description=read_file('README.md'),
+        long_description=f"""{read_file('README.md')}""",
         long_description_content_type="text/markdown",
         author='Ravi Sharma',
         author_email='ravi.sharma.cs11@gmail.com',
@@ -46,7 +46,8 @@ if __name__ == '__main__':
             'Operating System :: OS Independent',
             'License :: OSI Approved :: Apache Software License',
             'Intended Audience :: Developers',
-            'Natural Language :: English'
+            'Natural Language :: English',
+            'Topic :: Software Development :: Libraries :: Python Modules',
         ],
         install_requires=['pyyaml'],
         zip_safe=True,

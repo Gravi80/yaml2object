@@ -10,3 +10,4 @@ main.py
 dev/
 dist
 *.egg-info*
+build/

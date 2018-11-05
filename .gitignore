@@ -1,0 +1,12 @@
+.idea
+target
+*.pyc
+*.log
+*.DS_Store
+.pytest_cache
+.cache/
+.coverage
+coverage_report/
+*.yml
+main.py
+dev/

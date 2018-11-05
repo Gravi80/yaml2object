@@ -3,6 +3,8 @@
 [![PyPI](https://img.shields.io/pypi/v/yaml2object.svg)](https://pypi.python.org/pypi/yaml2object)
 [![last commit](https://img.shields.io/github/last-commit/imravishar/yaml2object.svg?label=last%20commit)](https://github.com/imravishar/yaml2object/commits/master)
 [![License](https://img.shields.io/hexpm/l/plug.svg)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
+[![PyPI Package monthly downloads](https://img.shields.io/pypi/dm/yaml2object.svg?style=flat)](https://pypi.python.org/pypi/yaml2object)
+[![PyPI download week](https://img.shields.io/pypi/dw/yaml2object.svg)](https://pypi.python.org/pypi/yaml2object)
 
 
 pip install yaml2object

@@ -10,12 +10,13 @@
 
 Install
 -------
-
+```
 pip install yaml2object
+```
 
 Usage
 ------
-1. Create your YAML settings
+**1. Create your YAML settings**
 ```
 # config.yml
 defaults: &defaults
@@ -36,7 +37,17 @@ test:
   port: 8001
 
 ```
-2. Define your class
+**2. Define your class**
+
+<ol type="a">
+  <li>Set <b>yaml2object.YAMLObject</b> as meta-class of your config class.</li>
+  <li>Provide <b>source, namespace</b> as class fields.
+    <ul>
+      <li>scource: YAML file path</li>
+      <li>namespace: param key in YAML file</li>
+    </ul>
+  </li>
+</ol>
 
 ```python
 from yaml2object import YAMLObject
@@ -45,7 +56,6 @@ class Config(metaclass=YAMLObject):
     source = 'config.yml'
 ```
 > Warning Log: Missing namespace attribute. Converting 'config.yml' to object.
----
 
 ```python
 class Config(metaclass=YAMLObject):
@@ -53,7 +63,6 @@ class Config(metaclass=YAMLObject):
     namespace = 'invalid'
 ```
 > Warning Log: Missing 'invalid' param in 'config.yml'. Converting 'config.yml' to object.
----
 
 ```python
 class DevelopmentConfig(metaclass=YAMLObject):
@@ -66,7 +75,7 @@ class TestConfig(metaclass=YAMLObject):
 
 ```
 
-3. Access your YAML as python object
+**3. Access your YAML as python object**
 ```python
 >>> Config.to_dict()
 >>> Config.development.to_dict()

@@ -10,3 +10,5 @@ coverage_report/
 *.yml
 main.py
 dev/
+dist
+*.egg-info*

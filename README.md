@@ -1,3 +1,10 @@
+### Status
+[![Build Status](https://travis-ci.org/imravishar/yaml2object.svg?branch=master)](https://travis-ci.org/imravishar/yaml2object)
+[![PyPI](https://img.shields.io/pypi/v/yaml2object.svg)](https://pypi.python.org/pypi/yaml2object)
+[![last commit](https://img.shields.io/github/last-commit/imravishar/yaml2object.svg?label=last%20commit)](https://github.com/imravishar/yaml2object/commits/master)
+[![License](https://img.shields.io/hexpm/l/plug.svg)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
+
+
 pip install yaml2object
 
 **Usage**

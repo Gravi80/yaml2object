@@ -22,9 +22,9 @@ class install(_install):
 if __name__ == '__main__':
     setup(
         name='yaml2object',
-        version='1.0.1',
+        version='1.0.2',
+        long_description_content_type="text/markdown",
         description='A simple solution that allows dot notation for YAML file.',
-        long_description='yaml2object is a simple solution that allows dot notation for YAML file.',
         author='Ravi Sharma',
         author_email='ravi.sharma.cs11@gmail.com',
         license='Apache2',

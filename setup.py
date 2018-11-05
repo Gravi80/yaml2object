@@ -22,7 +22,7 @@ class install(_install):
 if __name__ == '__main__':
     setup(
         name='yaml2object',
-        version='1.0.0',
+        version='1.0.1',
         description='A simple solution that allows dot notation for YAML file.',
         long_description='yaml2object is a simple solution that allows dot notation for YAML file.',
         author='Ravi Sharma',
@@ -32,9 +32,13 @@ if __name__ == '__main__':
         keywords=['YAML', 'pyyaml', 'Python YAML', 'python yaml'],
         packages=find_packages(exclude=['tests']),
         classifiers=[
-            'Development Status :: 3 - Alpha',
-            'Programming Language :: Python',
+            'Environment :: Console',
+            'Programming Language :: Python :: 3.6',
+            'Programming Language :: Python :: 3.7',
+            'Operating System :: OS Independent',
             'License :: OSI Approved :: Apache Software License',
+            'Intended Audience :: Developers',
+            'Natural Language :: English'
         ],
         install_requires=['pyyaml'],
         zip_safe=True,

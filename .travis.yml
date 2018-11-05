@@ -7,3 +7,6 @@ install:
 
 script:
   - pytest --cov --cov-report=html
+
+after_success:
+  - coveralls

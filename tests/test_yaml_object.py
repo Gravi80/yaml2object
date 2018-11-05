@@ -51,6 +51,19 @@ class TestYAMLObject(object):
         assert 'value11' == Test.key11
         assert {'key11': 'value11'} == Test.to_dict()
 
+    @pytest.mark.parametrize("key_value", [3, [1, 2, 3], 'value'])
+    @patch('yaml2object.yaml_object.YAMLLoader')
+    def test_should_add_assing_key_as_attribute_when_key_value_is_not_dict(self, mock_yaml_loader, key_value):
+        yaml_content = {'key1': key_value}
+        mock_yaml_loader.load.return_value = yaml_content
+
+        class Test(metaclass=YAMLObject):
+            source = 'yaml file path'
+            namespace = 'key1'
+
+        assert key_value == Test.key1
+        assert hasattr(Test, 'to_dict') is False
+
     @patch('yaml2object.yaml_object.YAMLLoader')
     def test_should_add_all_keys_as_attributes_when_namespace_is_not_present(self, mock_yaml_loader):
         yaml_content = {'key1': {'key11': 'value11'}, 'key2': 'value2'}

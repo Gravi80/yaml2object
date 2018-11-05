@@ -13,10 +13,13 @@ class YAMLObject(type):
         namespace = fields.get('namespace')
         YAMLObject._valid_source(source)
         namespace_content = YAMLObject._namespace_content(namespace, source)
-        namespace_content_copy = dict(namespace_content)
-        mcs._create_node_for(namespace_content_copy)
-        child_class = type.__new__(mcs, name, bases, {**fields, **namespace_content_copy})
-        child_class.to_dict = lambda: namespace_content
+        if isinstance(namespace_content, dict):
+            namespace_content_copy = dict(namespace_content)
+            mcs._create_node_for(namespace_content_copy)
+            child_class = type.__new__(mcs, name, bases, {**fields, **namespace_content_copy})
+            child_class.to_dict = lambda: namespace_content
+        else:
+            child_class = type.__new__(mcs, name, bases, {**fields, **{namespace: namespace_content}})
         return child_class
 
     @classmethod

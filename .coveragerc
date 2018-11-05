@@ -1,0 +1,15 @@
+# .coveragerc to control pytest coverage
+
+[run]
+branch = True
+omit =
+    yaml2object/__init__.py
+    yaml2object/errors.py
+    */tests/*
+    */site-packages/*
+
+[report]
+ignore_errors = True
+
+[html]
+directory = coverage_report

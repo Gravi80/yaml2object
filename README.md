@@ -8,11 +8,13 @@
 [![PyPI download week](https://img.shields.io/pypi/dw/yaml2object.svg)](https://pypi.python.org/pypi/yaml2object)
 
 
+Install
+-------
+
 pip install yaml2object
 
-**Usage**
-=========
-
+Usage
+------
 1. Create your YAML settings
 ```
 # config.yml
@@ -35,22 +37,25 @@ test:
 
 ```
 2. Define your class
-```
+
+```python
 from yaml2object import YAMLObject
 
 class Config(metaclass=YAMLObject):
     source = 'config.yml'
+```
+> Warning Log: Missing namespace attribute. Converting 'config.yml' to object.
+---
 
-Warning Log: Missing namespace attribute. Converting 'config.yml' to object.
-
-
+```python
 class Config(metaclass=YAMLObject):
     source = 'config.yml'
     namespace = 'invalid'
+```
+> Warning Log: Missing 'invalid' param in 'config.yml'. Converting 'config.yml' to object.
+---
 
-Warning Log: Missing 'invalid' param in 'config.yml'. Converting 'config.yml' to object.
-
-
+```python
 class DevelopmentConfig(metaclass=YAMLObject):
     source = 'config.yml'
     namespace = 'development'
@@ -62,7 +67,7 @@ class TestConfig(metaclass=YAMLObject):
 ```
 
 3. Access your YAML as python object
-```
+```python
 >>> Config.to_dict()
 >>> Config.development.to_dict()
 >>> Config.development.database.to_dict()

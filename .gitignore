@@ -1,5 +1,4 @@
 .idea
-target
 *.pyc
 *.log
 *.DS_Store
@@ -7,7 +6,6 @@ target
 .cache/
 .coverage
 coverage_report/
-*.yml
 main.py
 dev/
 dist

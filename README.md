@@ -58,6 +58,8 @@ class Config(metaclass=YAMLObject):
 > Warning Log: Missing namespace attribute. Converting 'config.yml' to object.
 
 ```python
+from yaml2object import YAMLObject
+
 class Config(metaclass=YAMLObject):
     source = 'config.yml'
     namespace = 'invalid'
@@ -65,6 +67,8 @@ class Config(metaclass=YAMLObject):
 > Warning Log: Missing 'invalid' param in 'config.yml'. Converting 'config.yml' to object.
 
 ```python
+from yaml2object import YAMLObject
+
 class DevelopmentConfig(metaclass=YAMLObject):
     source = 'config.yml'
     namespace = 'development'

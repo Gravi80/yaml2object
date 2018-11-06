@@ -51,23 +51,25 @@ test:
   </li>
 </ol>
 
+###### When source is a YAML file
+
 ```python
 from yaml2object import YAMLObject
 
 class Config(metaclass=YAMLObject):
     source = 'config.yml'
-```
-> Warning Log: Missing namespace attribute. Converting 'config.yml' to object.
 
+> WarningLog: Missing namespace attribute. Converting 'config.yml' to object.
+```
 ```python
 from yaml2object import YAMLObject
 
 class Config(metaclass=YAMLObject):
     source = 'config.yml'
     namespace = 'invalid'
-```
-> Warning Log: Missing 'invalid' param in 'config.yml'. Converting 'config.yml' to object.
 
+> WarningLog: Missing 'invalid' param in 'config.yml'. Converting 'config.yml' to object.
+```
 ```python
 from yaml2object import YAMLObject
 
@@ -79,10 +81,6 @@ class TestConfig(metaclass=YAMLObject):
     source = 'config.yml'
     namespace = 'test'
 
-```
-
-```python
-from yaml2object import YAMLObject
 DefaultConfig = YAMLObject('DefaultConfig', (object,), {'source': 'config.yml', 'namespace': 'defaults'})
 ```
 

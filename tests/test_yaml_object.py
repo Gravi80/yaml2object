@@ -161,3 +161,18 @@ class TestYAMLObject(object):
 
         logger_mock.warning.assert_called_once_with("Missing 'invalid' param in source."
                                                     " Converting source to object.")
+
+    def test_should_create_dict_inside_arrays_as_node(self):
+        source = {'matrix': {'include': [1,
+                                         'str',
+                                         [1, 2],
+                                         {'python': 3.6},
+                                         {'python': 3.7, 'dist': 'xenial', 'sudo': True}]}}
+
+        MatrixConfig = YAMLObject('MatrixConfig', (object,), {'source': source, 'namespace': 'matrix'})
+
+        assert isinstance(MatrixConfig.include[0], int) is True
+        assert isinstance(MatrixConfig.include[1], str) is True
+        assert isinstance(MatrixConfig.include[2], list) is True
+        assert issubclass(MatrixConfig.include[3].__class__, Node) is True
+        assert issubclass(MatrixConfig.include[4].__class__, Node) is True

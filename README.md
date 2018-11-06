@@ -81,6 +81,11 @@ class TestConfig(metaclass=YAMLObject):
 
 ```
 
+```python
+from yaml2object import YAMLObject
+DefaultConfig = YAMLObject('DefaultConfig', (object,), {'source': 'config.yml', 'namespace': 'defaults'})
+```
+
 **3. Access your YAML as python object**
 ```python
 >>> Config.to_dict()
@@ -99,4 +104,9 @@ class TestConfig(metaclass=YAMLObject):
 >>> TestConfig.database.to_dict()
 >>> TestConfig.database.adapter
 >>> TestConfig.database.database
+
+>>> DefaultConfig.to_dict()
+>>> DefaultConfig.database.to_dict()
+>>> DefaultConfig.database.adapter
+>>> DefaultConfig.nested_param.param1.sub_param1
 ```

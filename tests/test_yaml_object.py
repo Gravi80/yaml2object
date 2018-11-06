@@ -130,3 +130,13 @@ class TestYAMLObject(object):
 
         logger_mock.warning.assert_called_once_with("Missing 'invalid' param in 'yaml file path'."
                                                     "Converting 'yaml file path' to object.")
+
+    def test_should_allow_source_to_be_dictionary(self):
+        yaml_content = {'key1': {'key11': 'value11'}, 'key2': 'value2'}
+
+        class Test(metaclass=YAMLObject):
+            source = yaml_content
+            namespace = 'key1'
+
+        assert 'value11' == Test.key11
+        assert {'key11': 'value11'} == Test.to_dict()

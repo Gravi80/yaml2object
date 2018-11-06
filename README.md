@@ -45,8 +45,8 @@ test:
   <li>Set <b>yaml2object.YAMLObject</b> as meta-class of your config class.</li>
   <li>Provide <b>source, namespace</b> as class fields.
     <ul>
-      <li>scource: YAML file path</li>
-      <li>namespace: param key in YAML file</li>
+      <li>scource: YAML file path OR python dictionary</li>
+      <li>namespace: param key in YAML file OR python dictionary</li>
     </ul>
   </li>
 </ol>

@@ -24,14 +24,14 @@ class YAMLObject(type):
 
     @classmethod
     def _valid_source(cls, source):
-        if source and YAMLObject._string_present(source):
+        if source and (YAMLObject._string_present(source) or isinstance(source, dict)):
             return source
         else:
             raise MissingSourceError('No file specified as YAML source')
 
     @classmethod
     def _namespace_content(cls, namespace, source):
-        yaml_content = YAMLLoader.load(source)
+        yaml_content = source if isinstance(source, dict) else YAMLLoader.load(source)
         if namespace:
             if YAMLObject._string_present(namespace) and (namespace in yaml_content):
                 return yaml_content.get(namespace)

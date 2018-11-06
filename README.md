@@ -84,6 +84,19 @@ class TestConfig(metaclass=YAMLObject):
 DefaultConfig = YAMLObject('DefaultConfig', (object,), {'source': 'config.yml', 'namespace': 'defaults'})
 ```
 
+###### Source can also be a python dictionary
+```python
+from yaml2object import YAMLObject
+
+config = {'defaults': {'database':
+                            {'adapter': 'postgresql', 'database': 'development'},
+                       'port': 8000,
+                       'nested_param':
+                            {'param1': {'sub_param1': 'sub_param1 value', 'sub_param2': 'sub_param2 value'}}}}
+
+DefaultConfig = YAMLObject('DefaultConfig', (object,), {'source': config, 'namespace': 'defaults'})
+```
+
 **3. Access your YAML as python object**
 ```python
 >>> Config.to_dict()

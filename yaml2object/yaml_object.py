@@ -32,15 +32,16 @@ class YAMLObject(type):
     @classmethod
     def _namespace_content(cls, namespace, source):
         yaml_content = source if isinstance(source, dict) else YAMLLoader.load(source)
+        source_log = 'source' if isinstance(source, dict) else f"'{source}'"
         if namespace:
             if YAMLObject._string_present(namespace) and (namespace in yaml_content):
                 return yaml_content.get(namespace)
             else:
-                logger.warning(f"Missing '{namespace}' param in '{source}'."
-                               f"Converting '{source}' to object.")
+                logger.warning(f"Missing '{namespace}' param in {source_log}."
+                               f" Converting {source_log} to object.")
                 return yaml_content
         else:
-            logger.warning(f"Missing namespace attribute.Converting '{source}' to object.")
+            logger.warning(f"Missing namespace attribute. Converting {source_log} to object.")
             return yaml_content
 
     @classmethod

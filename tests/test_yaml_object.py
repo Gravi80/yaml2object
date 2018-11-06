@@ -116,7 +116,7 @@ class TestYAMLObject(object):
             source = 'yaml file path'
 
         logger_mock.warning.assert_called_once_with("Missing namespace attribute."
-                                                    "Converting 'yaml file path' to object.")
+                                                    " Converting 'yaml file path' to object.")
 
     @patch('yaml2object.yaml_object.logger')
     @patch('yaml2object.yaml_object.YAMLLoader')
@@ -129,7 +129,7 @@ class TestYAMLObject(object):
             namespace = 'invalid'
 
         logger_mock.warning.assert_called_once_with("Missing 'invalid' param in 'yaml file path'."
-                                                    "Converting 'yaml file path' to object.")
+                                                    " Converting 'yaml file path' to object.")
 
     def test_should_allow_source_to_be_dictionary(self):
         yaml_content = {'key1': {'key11': 'value11'}, 'key2': 'value2'}
@@ -140,3 +140,24 @@ class TestYAMLObject(object):
 
         assert 'value11' == Test.key11
         assert {'key11': 'value11'} == Test.to_dict()
+
+    @patch('yaml2object.yaml_object.logger')
+    def test_should_log_warning_when_namespace_is_missing_for_dict_source(self, logger_mock):
+        yaml_content = {'key': 'value'}
+
+        class Test(metaclass=YAMLObject):
+            source = yaml_content
+
+        logger_mock.warning.assert_called_once_with("Missing namespace attribute."
+                                                    " Converting source to object.")
+
+    @patch('yaml2object.yaml_object.logger')
+    def test_should_log_warning_when_namespace_is_invalid_for_dict_source(self, logger_mock):
+        yaml_content = {'key': 'value'}
+
+        class Test(metaclass=YAMLObject):
+            source = yaml_content
+            namespace = 'invalid'
+
+        logger_mock.warning.assert_called_once_with("Missing 'invalid' param in source."
+                                                    " Converting source to object.")

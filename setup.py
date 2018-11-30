@@ -7,7 +7,7 @@ from setuptools.command.install import install as _install
 
 
 def read_file(filename):
-    with open(path.join(path.dirname(__file__), filename), 'rb') as file:
+    with open(path.join(path.dirname(__file__), filename)) as file:
         return file.read().strip()
 
 

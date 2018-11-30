@@ -7,8 +7,8 @@ from setuptools.command.install import install as _install
 
 
 def read_file(filename):
-    with open(path.join(path.dirname(__file__), filename)) as file:
-        return file.read()
+    with open(path.join(path.dirname(__file__), filename), 'rb') as file:
+        return file.read().strip()
 
 
 class install(_install):
@@ -29,7 +29,7 @@ class install(_install):
 if __name__ == '__main__':
     setup(
         name='yaml2object',
-        version='1.0.8',
+        version='1.0.9',
         description='A simple solution that allows dot notation for YAML file.',
         long_description=read_file('README.md'),
         long_description_content_type="text/markdown",

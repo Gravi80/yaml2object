@@ -1,3 +1,5 @@
+yaml2object is a python library that allows dot notation access for YAML file.
+
 ### Status
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/yaml2object.svg)](https://pypi.python.org/pypi/yaml2object/)
 [![PyPI](https://img.shields.io/pypi/v/yaml2object.svg)](https://pypi.python.org/pypi/yaml2object)
@@ -7,8 +9,6 @@
 [![License](https://img.shields.io/hexpm/l/plug.svg)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
 [![PyPI Package monthly downloads](https://img.shields.io/pypi/dm/yaml2object.svg?style=flat)](https://pypi.python.org/pypi/yaml2object)
 [![PyPI download week](https://img.shields.io/pypi/dw/yaml2object.svg)](https://pypi.python.org/pypi/yaml2object)
-
-yaml2object is a python library that allows dot notation access for YAML file.
 
 Install
 -------

@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 
-from os import path
+import pathlib
 
 from setuptools import setup, find_packages
 from setuptools.command.install import install as _install
 
-
-def read_file(filename):
-    with open(path.join(path.dirname(__file__), filename)) as file:
-        return file.read().strip()
+ROOT_DIR = pathlib.Path(__file__).parent
+README = (ROOT_DIR / "README.md").read_text()
 
 
 class install(_install):
@@ -31,7 +29,7 @@ if __name__ == '__main__':
         name='yaml2object',
         version='1.0.10',
         description='A simple solution that allows dot notation for YAML file.',
-        long_description=read_file('README.md'),
+        long_description=README,
         long_description_content_type="text/markdown",
         author='Ravi Sharma',
         author_email='ravi.sharma.cs11@gmail.com',

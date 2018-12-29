@@ -1,4 +1,4 @@
-pytest
-pytest-cov
-mock
-python-coveralls
+pytest==4.0.2
+pytest-cov==2.6.0
+mock==2.0.0
+python-coveralls==2.9.1

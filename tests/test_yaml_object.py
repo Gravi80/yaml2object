@@ -1,5 +1,6 @@
 import pytest
-from mock import patch
+from mock import patch, ANY
+from os.path import dirname
 
 from yaml2object import YAMLObject, MissingSourceError, Node
 
@@ -176,3 +177,36 @@ class TestYAMLObject(object):
         assert isinstance(MatrixConfig.include[2], list) is True
         assert issubclass(MatrixConfig.include[3].__class__, Node) is True
         assert issubclass(MatrixConfig.include[4].__class__, Node) is True
+
+    def test_should_add_underscore_before_python_keywords(self):
+        config_dict1 = {'from': 'value1', 'None': 'value2'}
+        config_dict2 = {'some': {'while': 'value1', 'with': 'value2'}}
+        Config1 = YAMLObject('Config', (object,), {'source': config_dict1})
+        Config2 = YAMLObject('Config', (object,), {'source': config_dict2})
+
+        assert Config1._from == 'value1'
+        assert Config1._None == 'value2'
+        assert Config2.some._while == 'value1'
+        assert Config2.some._with == 'value2'
+
+    def test_should_load_data_from_test_yml(self):
+        yaml_file = f"{dirname(__file__)}/test.yml"
+
+        class Config(metaclass=YAMLObject):
+            source = yaml_file
+
+        DefaultConfig = YAMLObject('DefaultConfig', (object,),
+                                   {'source': yaml_file, 'namespace': 'defaults'})
+
+        assert DefaultConfig.database.adapter == 'postgresql'
+        assert DefaultConfig.port == 8000
+        assert DefaultConfig.nested_param.param1.sub_param1 == 'sub_param1 value'
+        assert DefaultConfig.nested_param.param1.sub_param2 == 'sub_param2 value'
+        assert DefaultConfig.array_param == ['param1', 'param2', ANY]
+        assert DefaultConfig.array_param[2].param3 == 'a'
+        assert DefaultConfig.array_param[2].type == 'x'
+        assert DefaultConfig.key_word_params._while == 'while'
+        assert DefaultConfig.key_word_params._with == 'with'
+        assert hasattr(Config, 'defaults') is True
+        assert hasattr(Config, 'development') is True
+        assert hasattr(Config, 'test') is True

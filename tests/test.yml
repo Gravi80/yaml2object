@@ -1,0 +1,24 @@
+defaults: &defaults
+  database:
+    adapter: postgresql
+    database: development
+  port: 8000
+  nested_param:
+    param1:
+        sub_param1: 'sub_param1 value'
+        sub_param2: 'sub_param2 value'
+  array_param:
+    - param1
+    - param2
+    - param3: "a"
+      type: "x"
+  key_word_params:
+    while: 'while'
+    with: 'with'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  port: 8001

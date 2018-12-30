@@ -1,10 +1,8 @@
-import keyword
 import logging
 
 from yaml2object import MissingSourceError, YAMLLoader, NodeMeta, Node
 
 logger = logging.getLogger(__name__)
-PYTHON_KEYWORDS = keyword.kwlist
 
 
 class YAMLObject(type):
@@ -14,16 +12,16 @@ class YAMLObject(type):
         YAMLObject._valid_source(source)
         namespace_content = YAMLObject._namespace_content(namespace, source)
         if isinstance(namespace_content, dict):
-            child_class = YAMLObject._create_node_for(name, namespace_content, mcs, bases, fields)
+            child_class = YAMLObject._create_node_for(name, namespace_content, fields)
         else:
             child_class = type.__new__(mcs, name, bases, {**fields, **{namespace: namespace_content}})
         return child_class
 
     @classmethod
-    def _create_node_for(cls, node_name, node_content, mcs, bases, fields):
+    def _create_node_for(cls, node_name, node_content, fields):
         node_content_copy = dict(node_content)
         cls._create_sub_nodes_for(node_content_copy)
-        child_class = type.__new__(mcs, node_name, bases, {**fields, **node_content_copy})
+        child_class = cls._create_node(node_name, {**fields, **node_content_copy})
         child_class.to_dict = lambda: node_content
         return child_class
 

@@ -121,3 +121,21 @@ DefaultConfig = YAMLObject('DefaultConfig', (object,), {'source': config, 'names
 >>> DefaultConfig.database.adapter
 >>> DefaultConfig.nested_param.param1.sub_param1
 ```
+### NOTE
+An underscore is added before any key matching python keyword lists
+https://docs.python.org/3/library/keyword.html#keyword.kwlist
+
+Example:
+```python
+from yaml2object import YAMLObject
+
+config_dict = {'from': 'value1', 'None': 'value2'}
+Config = YAMLObject('Config', (object,), {'source': config_dict})
+    Missing namespace attribute. Converting source to object.
+    Param from is a python keyword. Adding _ (underscore) before the param and can be accessed as _from
+    Param None is a python keyword. Adding _ (underscore) before the param and can be accessed as _None
+>>> Config._from
+value1
+>>> Config._None
+value2
+```

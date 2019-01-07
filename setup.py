@@ -27,7 +27,7 @@ class install(_install):
 if __name__ == '__main__':
     setup(
         name='yaml2object',
-        version='1.0.12',
+        version='1.0.13',
         description='A simple solution that allows dot notation for YAML file.',
         long_description=README,
         long_description_content_type="text/markdown",
